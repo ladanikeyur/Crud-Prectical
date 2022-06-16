@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import CustomButton from "./CustomButton";
 import { data } from "./TableData";
 
 const tableData = [...data];
@@ -213,30 +214,14 @@ const Table = () => {
                   </td>
                   <td>{val.Parent}</td>
                   <td>
-                    <button
-                      className="btn"
-                      onClick={() => {
+                    <CustomButton
+                      edit={() => {
                         EditData(val, ind, "Perent");
                       }}
-                    >
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png"
-                        height={15}
-                        width={15}
-                      />
-                    </button>
-                    <button
-                      className="btn"
-                      onClick={() => {
+                      Delete={() => {
                         dataDelete(val, ind);
                       }}
-                    >
-                      <img
-                        src="https://www.svgrepo.com/show/21045/delete-button.svg"
-                        height={15}
-                        width={15}
-                      />
-                    </button>
+                    />
                   </td>
                 </tr>
                 {val.Child.length > 0
@@ -255,31 +240,15 @@ const Table = () => {
                           <td>{child.name}</td>
                           <td>{child.Parent}</td>
                           <td>
-                            <button
-                              className="btn m-1"
-                              onClick={() => {
+                            <CustomButton
+                              edit={() => {
                                 EditData(child, i, "child");
                                 ChildEdit(val, ind);
                               }}
-                            >
-                              <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png"
-                                height={15}
-                                width={15}
-                              />
-                            </button>
-                            <button
-                              className="btn m-1"
-                              onClick={() => {
+                              Delete={() => {
                                 ChilddataDelete(val, i);
                               }}
-                            >
-                              <img
-                                src="https://www.svgrepo.com/show/21045/delete-button.svg"
-                                height={15}
-                                width={15}
-                              />
-                            </button>
+                            />
                           </td>
                         </tr>
                       );
